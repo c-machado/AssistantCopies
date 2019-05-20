@@ -1,9 +1,6 @@
-package runner;
-
-
 //import org.testng.annotations.AfterClass;
 //import org.testng.annotations.BeforeClass;
-//import org.testng.annotations.Test;
+import org.testng.annotations.Test;
 import base.*;
 
 import java.io.IOException;
@@ -21,13 +18,22 @@ public class TestRunner {
 //        System.out.println("before");
 //    }
 //
-//    @Test
-//    public void feature() {
-//        //testNGCucumberRunner.runCucumber(cucumberFeature.getCucumberFeature());
-////        home = new Homepage();
-////        home.setUp();
+    @Test
+    public void feature() {
+        //testNGCucumberRunner.runCucumber(cucumberFeature.getCucumberFeature());
+//        home = new Homepage();
+//        home.setUp();
+        System.out.println(">>>>>>> on test execution");
+
+        try {
+            sheets.authenticate();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (GeneralSecurityException e) {
+            e.printStackTrace();
+        }
 //        System.out.println("before");
-//    }
+    }
 //
 //    /*@DataProvider
 //    public Object[][] features() {
@@ -40,9 +46,9 @@ public class TestRunner {
 //        System.out.println("after");
 //    }
 
-    public static void main(String args[]) throws IOException, GeneralSecurityException {
+//    public static void main(String args[]) throws IOException, GeneralSecurityException {
         //home = new Homepage();
         //home.setUp();
-        sheets.authenticate();
-    }
+        //sheets.authenticate();
+//    }
 }
