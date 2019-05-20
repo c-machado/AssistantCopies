@@ -30,6 +30,7 @@ test { //this is the gradle task to be executed
         reports.html.enabled = false
     }
     testLogging {
+        showStandardStreams = true
         events "PASSED", "FAILED", "SKIPPED"
     }
 }
