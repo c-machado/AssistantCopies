@@ -1,3 +1,4 @@
+import base.Homepage;
 import org.testng.annotations.Test;
 import base.SheetsQuickstart;
 import java.io.IOException;
@@ -5,7 +6,7 @@ import java.security.GeneralSecurityException;
 
 
 public class TestRunner {
-//    private static Homepage home;
+    private static Homepage home;
     private static SheetsQuickstart sheets;
 
 
@@ -16,6 +17,7 @@ public class TestRunner {
 //        home.setUp();
         System.out.println("test execution");
         try {
+            sheets = new SheetsQuickstart();
             sheets.authenticate();
         } catch (IOException e) {
             e.printStackTrace();
