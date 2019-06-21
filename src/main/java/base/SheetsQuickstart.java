@@ -71,7 +71,7 @@ public class SheetsQuickstart {
         // Build a new authorized API client service.
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
         final String spreadsheetId = "1okfhWpOVqNP6zqm6hqNJVfUygqsrtgn-Zg4B-wlAwgo";
-        final String range = "Homepage!A3:C32";
+        final String range = "Homepage!A3:C89";
 
         String selector = "", copyOnSheets = "", copyOnPage = "";
         Sheets service = new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
@@ -91,22 +91,21 @@ public class SheetsQuickstart {
             System.out.println("No data found.");
         } else {
             for (List row : spreadsheetsValues) {
-               for(Object column : row) {
-                   if(row.indexOf(column) == 0) {
-                       selector = column.toString();
-                       System.out.println("SELECTOR " + selector);
-                   }
-                   if(row.indexOf(column) == 2) {
-                       copyOnSheets = column.toString();
-                       System.out.println("COPY ON SHEETS " + copyOnSheets);
-                   }
-               }
+                for(Object column : row) {
+                    if(row.indexOf(column) == 0) {
+                        selector = column.toString();
+                        System.out.println("SELECTOR " + selector);
+                    }
+                    if(row.indexOf(column) == 2) {
+                        copyOnSheets = column.toString();
+                        System.out.println("COPY ON SHEETS " + copyOnSheets);
+                    }
+                }
                 if(!selector.equals("")) {
                     System.out.println("COPY ON SHEETS 1" + copyOnSheets);
-                    copiesValidation.compareCopies(selector, copyOnSheets);
+                    copiesValidation.compareCopies(selector, copyOnSheets.trim());
                 }
             }
-
         }
     }
 }
