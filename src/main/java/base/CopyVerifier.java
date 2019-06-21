@@ -23,7 +23,7 @@ public class CopyVerifier {
         String dataType = "";
         String [] selectorKeys = _selector.split(",");
         String selector = selectorKeys[0];
-        if(selectorKeys.length>1) {
+        if(selectorKeys.length > 1) {
             dataType = selectorKeys[1];
         }
         WebElement element = driver.findElement(By.cssSelector(selector));
@@ -34,25 +34,19 @@ public class CopyVerifier {
             case "img":
                 System.out.println("Case IMG " + getCopyFromType(dataType,element));
                 return getCopyFromType(dataType,element);
-            case "h2":
-                System.out.println("Case H2 " + element.getAttribute("innerHTML").trim().replaceAll("&nbsp;", " "));
-                return element.getAttribute("innerHTML").trim().replaceAll("&nbsp;", " ");
             case "a":
                 System.out.println("Case a " + getCopyFromType(dataType,element));
                 return getCopyFromType(dataType,element);
-            case "p":
-                System.out.println("Case p " + Utils.htmlToText(element.getAttribute("innerHTML").trim().replaceAll("&nbsp;", " ")));
-                return Utils.htmlToText(element.getAttribute("innerHTML").trim().replaceAll("&nbsp;", " "));
             case "div":
                 System.out.println("Case div "+element.getAttribute("data-c-video-id"));
                 String youTubeVideo = "https://youtube.com/watch?v=" + element.getAttribute("data-c-video-id");
                 return youTubeVideo;
             case "span":
-                System.out.println("Case span "+element.getAttribute("innerHTML").trim().replaceAll("&nbsp;", " "));
-                return element.getAttribute("innerHTML").trim().replaceAll("&nbsp;", " ");
             case "h3":
-                System.out.println("Case H3 " + element.getAttribute("innerHTML").trim().replaceAll("&nbsp;", " "));
-                return element.getAttribute("innerHTML").trim().replaceAll("&nbsp;", " ");
+            case "h2":
+            case "p":
+                System.out.println("Case " + tag + ": " + Utils.htmlToText(element.getAttribute("innerHTML").trim().replaceAll("&nbsp;", " ")));
+                return Utils.htmlToText(element.getAttribute("innerHTML").trim().replaceAll("&nbsp;", " "));
             default:
                 throw new RuntimeException("unknown locator " + tag + " : " + _selector);
         }
