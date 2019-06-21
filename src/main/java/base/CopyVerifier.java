@@ -45,8 +45,8 @@ public class CopyVerifier {
             case "h3":
             case "h2":
             case "p":
-                System.out.println("Case " + tag + ": " + Utils.htmlToText(element.getAttribute("innerHTML").trim().replaceAll("&nbsp;", " ")));
-                return Utils.htmlToText(element.getAttribute("innerHTML").trim().replaceAll("&nbsp;", " "));
+                System.out.println("Case " + tag + ": " + Utils.htmlToText(element.getAttribute("innerHTML").trim()));
+                return Utils.htmlToText(element.getAttribute("innerHTML").trim());
             default:
                 throw new RuntimeException("unknown locator " + tag + " : " + _selector);
         }
